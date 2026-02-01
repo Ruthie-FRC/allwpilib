@@ -6,7 +6,7 @@
 
 package org.wpilib.hardware.motor;
 
-import org.wpilib.hardware.discrete.PWM;
+import org.wpilib.hardware.discrete.PWMOutput;
 import org.wpilib.hardware.hal.HAL;
 
 /**

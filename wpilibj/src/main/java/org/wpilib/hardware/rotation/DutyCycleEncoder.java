@@ -17,7 +17,7 @@ import org.wpilib.util.sendable.SendableRegistry;
  * CTRE Mag Encoder, the Rev Hex Encoder, and the AM Mag Encoder.
  */
 public class DutyCycleEncoder implements Sendable, AutoCloseable {
-  private final DutyCycle m_dutyCycle;
+  private final DutyCycleInput m_dutyCycle;
   private boolean m_ownsDutyCycle;
   private double m_frequencyThreshold = 100;
   private double m_fullRange;
@@ -41,7 +41,7 @@ public class DutyCycleEncoder implements Sendable, AutoCloseable {
   @SuppressWarnings("this-escape")
   public DutyCycleEncoder(int channel, double fullRange, double expectedZero) {
     m_ownsDutyCycle = true;
-    m_dutyCycle = new DutyCycle(channel);
+    m_dutyCycle = new DutyCycleInput(channel);
     init(fullRange, expectedZero);
   }
 
@@ -53,7 +53,7 @@ public class DutyCycleEncoder implements Sendable, AutoCloseable {
    * @param expectedZero the reading where you would expect a 0 from get()
    */
   @SuppressWarnings("this-escape")
-  public DutyCycleEncoder(DutyCycle dutyCycle, double fullRange, double expectedZero) {
+  public DutyCycleEncoder(DutyCycleInput dutyCycle, double fullRange, double expectedZero) {
     m_dutyCycle = dutyCycle;
     init(fullRange, expectedZero);
   }
@@ -78,7 +78,7 @@ public class DutyCycleEncoder implements Sendable, AutoCloseable {
    * @param dutyCycle the duty cycle to attach to
    */
   @SuppressWarnings("this-escape")
-  public DutyCycleEncoder(DutyCycle dutyCycle) {
+  public DutyCycleEncoder(DutyCycleInput dutyCycle) {
     this(dutyCycle, 1.0, 0.0);
   }
 

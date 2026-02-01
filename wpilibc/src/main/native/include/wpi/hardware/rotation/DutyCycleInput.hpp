@@ -21,23 +21,23 @@ namespace wpi {
  * low in that frequency. These can be attached to any SmartIO.
  *
  */
-class DutyCycle : public wpi::util::Sendable,
-                  public wpi::util::SendableHelper<DutyCycle> {
+class DutyCycleInput : public wpi::util::Sendable,
+                  public wpi::util::SendableHelper<DutyCycleInput> {
  public:
   /**
    * Constructs a DutyCycle input from a smartio channel.
    *
    * @param source The channel to use.
    */
-  explicit DutyCycle(int source);
+  explicit DutyCycleInput(int source);
 
-  DutyCycle(DutyCycle&&) = default;
-  DutyCycle& operator=(DutyCycle&&) = default;
+  DutyCycleInput(DutyCycleInput&&) = default;
+  DutyCycleInput& operator=(DutyCycleInput&&) = default;
 
   /**
    * Close the DutyCycle and free all resources.
    */
-  ~DutyCycle() override = default;
+  ~DutyCycleInput() override = default;
 
   /**
    * Get the frequency of the duty cycle signal.

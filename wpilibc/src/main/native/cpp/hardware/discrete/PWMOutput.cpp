@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "wpi/hardware/discrete/PWM.hpp"
+#include "wpi/hardware/discrete/PWMOutput.hpp"
 
 #include <utility>
 
@@ -18,7 +18,7 @@
 
 using namespace wpi;
 
-PWM::PWM(int channel, bool registerSendable) {
+PWMOutput::PWMOutput(int channel, bool registerSendable) {
   if (!SensorUtil::CheckPWMChannel(channel)) {
     throw WPILIB_MakeError(err::ChannelIndexOutOfRange, "Channel {}", channel);
   }
@@ -38,19 +38,19 @@ PWM::PWM(int channel, bool registerSendable) {
   }
 }
 
-PWM::~PWM() {
+PWMOutput::~PWMOutput() {
   if (m_handle != HAL_kInvalidHandle) {
     SetDisabled();
   }
 }
 
-void PWM::SetPulseTime(wpi::units::microsecond_t time) {
+void PWMOutput::SetPulseTime(wpi::units::microsecond_t time) {
   int32_t status = 0;
   HAL_SetPWMPulseTimeMicroseconds(m_handle, time.value(), &status);
   WPILIB_CheckErrorStatus(status, "Channel {}", m_channel);
 }
 
-wpi::units::microsecond_t PWM::GetPulseTime() const {
+wpi::units::microsecond_t PWMOutput::GetPulseTime() const {
   int32_t status = 0;
   double value = HAL_GetPWMPulseTimeMicroseconds(m_handle, &status);
   WPILIB_CheckErrorStatus(status, "Channel {}", m_channel);
@@ -58,13 +58,13 @@ wpi::units::microsecond_t PWM::GetPulseTime() const {
   return wpi::units::microsecond_t{value};
 }
 
-void PWM::SetDisabled() {
+void PWMOutput::SetDisabled() {
   int32_t status = 0;
   HAL_SetPWMPulseTimeMicroseconds(m_handle, 0, &status);
   WPILIB_CheckErrorStatus(status, "Channel {}", m_channel);
 }
 
-void PWM::SetOutputPeriod(OutputPeriod mult) {
+void PWMOutput::SetOutputPeriod(OutputPeriod mult) {
   int32_t status = 0;
 
   switch (mult) {
@@ -88,15 +88,15 @@ void PWM::SetOutputPeriod(OutputPeriod mult) {
   WPILIB_CheckErrorStatus(status, "Channel {}", m_channel);
 }
 
-int PWM::GetChannel() const {
+int PWMOutput::GetChannel() const {
   return m_channel;
 }
 
-void PWM::SetSimDevice(HAL_SimDeviceHandle device) {
+void PWMOutput::SetSimDevice(HAL_SimDeviceHandle device) {
   HAL_SetPWMSimDevice(m_handle, device);
 }
 
-void PWM::InitSendable(wpi::util::SendableBuilder& builder) {
+void PWMOutput::InitSendable(wpi::util::SendableBuilder& builder) {
   builder.SetSmartDashboardType("PWM");
   builder.SetActuator(true);
   builder.AddDoubleProperty(

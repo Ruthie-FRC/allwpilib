@@ -5,7 +5,7 @@
 package org.wpilib.hardware.motor;
 
 import java.util.ArrayList;
-import org.wpilib.hardware.discrete.PWM;
+import org.wpilib.hardware.discrete.PWMOutput;
 import org.wpilib.hardware.hal.SimDevice;
 import org.wpilib.hardware.hal.SimDevice.Direction;
 import org.wpilib.hardware.hal.SimDouble;
@@ -22,7 +22,7 @@ public abstract class PWMMotorController extends MotorSafety
   private final ArrayList<PWMMotorController> m_followers = new ArrayList<>();
 
   /** PWM instances for motor controller. */
-  protected PWM m_pwm;
+  protected PWMOutput m_pwm;
 
   private SimDevice m_simDevice;
   private SimDouble m_simSpeed;
@@ -43,7 +43,7 @@ public abstract class PWMMotorController extends MotorSafety
    */
   @SuppressWarnings("this-escape")
   protected PWMMotorController(final String name, final int channel) {
-    m_pwm = new PWM(channel, false);
+    m_pwm = new PWMOutput(channel, false);
     SendableRegistry.add(this, name, channel);
 
     m_simDevice = SimDevice.create("PWMMotorController", channel);

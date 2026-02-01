@@ -19,7 +19,7 @@ import org.wpilib.util.sendable.SendableRegistry;
  * the microseconds to keep the pulse high, with a range of 0 (off) to 4096. Changes are immediately
  * sent to the FPGA, and the update occurs at the next FPGA cycle (5.05ms). There is no delay.
  */
-public class PWM implements Sendable, AutoCloseable {
+public class PWMOutput implements Sendable, AutoCloseable {
   /** Represents the output period in microseconds. */
   public enum OutputPeriod {
     /** Pulse every 5ms. */
@@ -44,7 +44,7 @@ public class PWM implements Sendable, AutoCloseable {
    *
    * @param channel The PWM channel number. 0-9 are on-board, 10-19 are on the MXP port
    */
-  public PWM(final int channel) {
+  public PWMOutput(final int channel) {
     this(channel, true);
   }
 
@@ -55,7 +55,7 @@ public class PWM implements Sendable, AutoCloseable {
    * @param registerSendable If true, adds this instance to SendableRegistry
    */
   @SuppressWarnings("this-escape")
-  public PWM(final int channel, final boolean registerSendable) {
+  public PWMOutput(final int channel, final boolean registerSendable) {
     SensorUtil.checkPWMChannel(channel);
     m_channel = channel;
 

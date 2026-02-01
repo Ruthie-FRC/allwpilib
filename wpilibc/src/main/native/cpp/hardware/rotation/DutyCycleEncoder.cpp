@@ -8,7 +8,7 @@
 #include <utility>
 
 #include "wpi/hardware/discrete/DigitalInput.hpp"
-#include "wpi/hardware/rotation/DutyCycle.hpp"
+#include "wpi/hardware/rotation/DutyCycleInput.hpp"
 #include "wpi/math/util/MathUtil.hpp"
 #include "wpi/util/NullDeleter.hpp"
 #include "wpi/util/sendable/SendableBuilder.hpp"
@@ -16,44 +16,44 @@
 using namespace wpi;
 
 DutyCycleEncoder::DutyCycleEncoder(int channel)
-    : m_dutyCycle{std::make_shared<DutyCycle>(channel)} {
+    : m_dutyCycle{std::make_shared<DutyCycleInput>(channel)} {
   Init(1.0, 0.0);
 }
 
-DutyCycleEncoder::DutyCycleEncoder(DutyCycle& dutyCycle)
-    : m_dutyCycle{&dutyCycle, wpi::util::NullDeleter<DutyCycle>{}} {
+DutyCycleEncoder::DutyCycleEncoder(DutyCycleInput& dutyCycle)
+    : m_dutyCycle{&dutyCycle, wpi::util::NullDeleter<DutyCycleInput>{}} {
   Init(1.0, 0.0);
 }
 
-DutyCycleEncoder::DutyCycleEncoder(DutyCycle* dutyCycle)
-    : m_dutyCycle{dutyCycle, wpi::util::NullDeleter<DutyCycle>{}} {
+DutyCycleEncoder::DutyCycleEncoder(DutyCycleInput* dutyCycle)
+    : m_dutyCycle{dutyCycle, wpi::util::NullDeleter<DutyCycleInput>{}} {
   Init(1.0, 0.0);
 }
 
-DutyCycleEncoder::DutyCycleEncoder(std::shared_ptr<DutyCycle> dutyCycle)
+DutyCycleEncoder::DutyCycleEncoder(std::shared_ptr<DutyCycleInput> dutyCycle)
     : m_dutyCycle{std::move(dutyCycle)} {
   Init(1.0, 0.0);
 }
 
 DutyCycleEncoder::DutyCycleEncoder(int channel, double fullRange,
                                    double expectedZero)
-    : m_dutyCycle{std::make_shared<DutyCycle>(channel)} {
+    : m_dutyCycle{std::make_shared<DutyCycleInput>(channel)} {
   Init(fullRange, expectedZero);
 }
 
-DutyCycleEncoder::DutyCycleEncoder(DutyCycle& dutyCycle, double fullRange,
+DutyCycleEncoder::DutyCycleEncoder(DutyCycleInput& dutyCycle, double fullRange,
                                    double expectedZero)
-    : m_dutyCycle{&dutyCycle, wpi::util::NullDeleter<DutyCycle>{}} {
+    : m_dutyCycle{&dutyCycle, wpi::util::NullDeleter<DutyCycleInput>{}} {
   Init(fullRange, expectedZero);
 }
 
-DutyCycleEncoder::DutyCycleEncoder(DutyCycle* dutyCycle, double fullRange,
+DutyCycleEncoder::DutyCycleEncoder(DutyCycleInput* dutyCycle, double fullRange,
                                    double expectedZero)
-    : m_dutyCycle{dutyCycle, wpi::util::NullDeleter<DutyCycle>{}} {
+    : m_dutyCycle{dutyCycle, wpi::util::NullDeleter<DutyCycleInput>{}} {
   Init(fullRange, expectedZero);
 }
 
-DutyCycleEncoder::DutyCycleEncoder(std::shared_ptr<DutyCycle> dutyCycle,
+DutyCycleEncoder::DutyCycleEncoder(std::shared_ptr<DutyCycleInput> dutyCycle,
                                    double fullRange, double expectedZero)
     : m_dutyCycle{std::move(dutyCycle)} {
   Init(fullRange, expectedZero);

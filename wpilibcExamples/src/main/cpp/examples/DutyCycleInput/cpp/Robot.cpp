@@ -4,7 +4,7 @@
 
 #include "wpi/framework/TimedRobot.hpp"
 #include "wpi/hardware/discrete/DigitalInput.hpp"
-#include "wpi/hardware/rotation/DutyCycle.hpp"
+#include "wpi/hardware/rotation/DutyCycleInput.hpp"
 #include "wpi/smartdashboard/SmartDashboard.hpp"
 
 class Robot : public wpi::TimedRobot {

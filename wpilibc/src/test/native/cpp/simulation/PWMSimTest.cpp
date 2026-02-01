@@ -8,7 +8,7 @@
 
 #include "callback_helpers/TestCallbackHelpers.hpp"
 #include "wpi/hal/HAL.h"
-#include "wpi/hardware/discrete/PWM.hpp"
+#include "wpi/hardware/discrete/PWMOutput.hpp"
 
 namespace wpi::sim {
 

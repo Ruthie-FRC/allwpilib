@@ -23,7 +23,7 @@ class AddressableLED;
  * (off) to 4096. Changes are immediately sent to the FPGA, and the update
  * occurs at the next FPGA cycle (5.05ms). There is no delay.
  */
-class PWM : public wpi::util::Sendable, public wpi::util::SendableHelper<PWM> {
+class PWMOutput : public wpi::util::Sendable, public wpi::util::SendableHelper<PWMOutput> {
  public:
   friend class AddressableLED;
   /**
@@ -55,17 +55,17 @@ class PWM : public wpi::util::Sendable, public wpi::util::SendableHelper<PWM> {
    *                MXP port
    * @param registerSendable If true, adds this instance to SendableRegistry
    */
-  explicit PWM(int channel, bool registerSendable = true);
+  explicit PWMOutput(int channel, bool registerSendable = true);
 
-  PWM(PWM&&) = default;
-  PWM& operator=(PWM&&) = default;
+  PWMOutput(PWMOutput&&) = default;
+  PWMOutput& operator=(PWMOutput&&) = default;
 
   /**
    * Free the PWM channel.
    *
    * Free the resource associated with the PWM channel and set the value to 0.
    */
-  ~PWM() override;
+  ~PWMOutput() override;
 
   /**
    * Set the PWM pulse time directly to the hardware.

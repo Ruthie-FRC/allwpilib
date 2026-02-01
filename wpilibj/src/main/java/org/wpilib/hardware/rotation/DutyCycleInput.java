@@ -19,7 +19,7 @@ import org.wpilib.util.sendable.SendableRegistry;
  * <p>These can be combined as the input of an AnalogTrigger to a Counter in order to implement
  * rollover checking.
  */
-public class DutyCycle implements Sendable, AutoCloseable {
+public class DutyCycleInput implements Sendable, AutoCloseable {
   // Explicitly package private
   final int m_handle;
   private final int m_channel;
@@ -30,7 +30,7 @@ public class DutyCycle implements Sendable, AutoCloseable {
    * @param channel The channel to use.
    */
   @SuppressWarnings("this-escape")
-  public DutyCycle(int channel) {
+  public DutyCycleInput(int channel) {
     m_handle = DutyCycleJNI.initialize(channel);
 
     m_channel = channel;

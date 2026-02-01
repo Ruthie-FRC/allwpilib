@@ -5,7 +5,7 @@
 package org.wpilib.examples.dutycycleinput;
 
 import org.wpilib.framework.TimedRobot;
-import org.wpilib.hardware.rotation.DutyCycle;
+import org.wpilib.hardware.rotation.DutyCycleInput;
 import org.wpilib.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
