@@ -8,7 +8,7 @@
 #include "wpi/smartdashboard/SmartDashboard.hpp"
 
 class Robot : public wpi::TimedRobot {
-  wpi::DutyCycle m_dutyCycle{0};  // Duty cycle input
+  wpi::DutyCycleInput m_dutyCycle{0};  // Duty cycle input
 
  public:
   Robot() {}
