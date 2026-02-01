@@ -1,0 +1,15 @@
+extra_includes:
+- wpi/hardware/discrete/PWM.hpp
+- wpi/hardware/discrete/PWMOutput.hpp
+
+classes:
+  wpi::PWM:
+    ignored_bases:
+    - wpi::util::SendableHelper<PWMOutput>
+    - wpi::PWMOutput
+    suppress_warnings: [deprecated-declarations]
+
+inline_code: |
+  // PWM is deprecated, bind it as an alias to PWMOutput
+  py::class_<PWM, PWMOutput> cls_PWM(m, "PWM");
+  cls_PWM.doc() = "Deprecated: Use PWMOutput instead";

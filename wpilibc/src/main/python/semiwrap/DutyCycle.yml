@@ -1,0 +1,15 @@
+extra_includes:
+- wpi/hardware/rotation/DutyCycle.hpp
+- wpi/hardware/rotation/DutyCycleInput.hpp
+
+classes:
+  wpi::DutyCycle:
+    ignored_bases:
+    - wpi::util::SendableHelper<DutyCycleInput>
+    - wpi::DutyCycleInput
+    suppress_warnings: [deprecated-declarations]
+
+inline_code: |
+  // DutyCycle is deprecated, bind it as an alias to DutyCycleInput
+  py::class_<DutyCycle, DutyCycleInput> cls_DutyCycle(m, "DutyCycle");
+  cls_DutyCycle.doc() = "Deprecated: Use DutyCycleInput instead";
