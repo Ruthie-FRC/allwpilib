@@ -25,7 +25,7 @@ class PWMSim {
    *
    * @param pwm PWM to simulate
    */
-  explicit PWMSim(const PWM& pwm);
+  explicit PWMSim(const PWMOutput& pwm);
 
   /**
    * Constructs from a PWM channel number.

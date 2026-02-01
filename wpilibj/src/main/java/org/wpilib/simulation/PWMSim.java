@@ -4,7 +4,7 @@
 
 package org.wpilib.simulation;
 
-import org.wpilib.hardware.discrete.PWM;
+import org.wpilib.hardware.discrete.PWMOutput;
 import org.wpilib.hardware.hal.simulation.NotifyCallback;
 import org.wpilib.hardware.hal.simulation.PWMDataJNI;
 
@@ -17,7 +17,7 @@ public class PWMSim {
    *
    * @param pwm PWM to simulate
    */
-  public PWMSim(PWM pwm) {
+  public PWMSim(PWMOutput pwm) {
     m_index = pwm.getChannel();
   }
 

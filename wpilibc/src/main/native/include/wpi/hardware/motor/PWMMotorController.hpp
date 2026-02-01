@@ -13,7 +13,7 @@
 #include <vector>
 
 #include "wpi/hal/SimDevice.h"
-#include "wpi/hardware/discrete/PWM.hpp"
+#include "wpi/hardware/discrete/PWMOutput.hpp"
 #include "wpi/hardware/motor/MotorController.hpp"
 #include "wpi/hardware/motor/MotorSafety.hpp"
 #include "wpi/units/voltage.hpp"
@@ -132,7 +132,7 @@ class PWMMotorController
   void InitSendable(wpi::util::SendableBuilder& builder) override;
 
   /// PWM instances for motor controller.
-  PWM m_pwm;
+  PWMOutput m_pwm;
 
   void SetSpeed(double speed);
   double GetSpeed() const;

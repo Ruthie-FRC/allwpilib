@@ -6,7 +6,7 @@
 
 package org.wpilib.hardware.motor;
 
-import org.wpilib.hardware.discrete.PWM;
+import org.wpilib.hardware.discrete.PWMOutput;
 import org.wpilib.hardware.hal.HAL;
 
 /**
@@ -38,7 +38,7 @@ public class VictorSP extends PWMMotorController {
     super("VictorSP", channel);
 
     setBoundsMicroseconds(2004, 1520, 1500, 1480, 997);
-    m_pwm.setOutputPeriod(PWM.OutputPeriod.k5Ms);
+    m_pwm.setOutputPeriod(PWMOutput.OutputPeriod.k5Ms);
     setSpeed(0.0);
 
     HAL.reportUsage("IO", getChannel(), "VictorSP");

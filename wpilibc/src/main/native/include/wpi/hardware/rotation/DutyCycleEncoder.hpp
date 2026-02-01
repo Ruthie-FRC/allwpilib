@@ -40,7 +40,7 @@ class DutyCycleEncoder : public wpi::util::Sendable,
    *
    * @param dutyCycle the duty cycle to attach to
    */
-  explicit DutyCycleEncoder(DutyCycle& dutyCycle);
+  explicit DutyCycleEncoder(DutyCycleInput& dutyCycle);
 
   /**
    * Construct a new DutyCycleEncoder attached to an existing DutyCycle object.
@@ -49,7 +49,7 @@ class DutyCycleEncoder : public wpi::util::Sendable,
    *
    * @param dutyCycle the duty cycle to attach to
    */
-  explicit DutyCycleEncoder(DutyCycle* dutyCycle);
+  explicit DutyCycleEncoder(DutyCycleInput* dutyCycle);
 
   /**
    * Construct a new DutyCycleEncoder attached to an existing DutyCycle object.
@@ -58,7 +58,7 @@ class DutyCycleEncoder : public wpi::util::Sendable,
    *
    * @param dutyCycle the duty cycle to attach to
    */
-  explicit DutyCycleEncoder(std::shared_ptr<DutyCycle> dutyCycle);
+  explicit DutyCycleEncoder(std::shared_ptr<DutyCycleInput> dutyCycle);
 
   /**
    * Construct a new DutyCycleEncoder on a specific channel.
@@ -76,7 +76,7 @@ class DutyCycleEncoder : public wpi::util::Sendable,
    * @param fullRange the value to report at maximum travel
    * @param expectedZero the reading where you would expect a 0 from get()
    */
-  DutyCycleEncoder(DutyCycle& dutyCycle, double fullRange, double expectedZero);
+  DutyCycleEncoder(DutyCycleInput& dutyCycle, double fullRange, double expectedZero);
 
   /**
    * Construct a new DutyCycleEncoder attached to an existing DutyCycle object.
@@ -85,7 +85,7 @@ class DutyCycleEncoder : public wpi::util::Sendable,
    * @param fullRange the value to report at maximum travel
    * @param expectedZero the reading where you would expect a 0 from get()
    */
-  DutyCycleEncoder(DutyCycle* dutyCycle, double fullRange, double expectedZero);
+  DutyCycleEncoder(DutyCycleInput* dutyCycle, double fullRange, double expectedZero);
 
   /**
    * Construct a new DutyCycleEncoder attached to an existing DutyCycle object.
@@ -94,7 +94,7 @@ class DutyCycleEncoder : public wpi::util::Sendable,
    * @param fullRange the value to report at maximum travel
    * @param expectedZero the reading where you would expect a 0 from get()
    */
-  DutyCycleEncoder(std::shared_ptr<DutyCycle> dutyCycle, double fullRange,
+  DutyCycleEncoder(std::shared_ptr<DutyCycleInput> dutyCycle, double fullRange,
                    double expectedZero);
 
   ~DutyCycleEncoder() override = default;
@@ -183,7 +183,7 @@ class DutyCycleEncoder : public wpi::util::Sendable,
   void Init(double fullRange, double expectedZero);
   double MapSensorRange(double pos) const;
 
-  std::shared_ptr<DutyCycle> m_dutyCycle;
+  std::shared_ptr<DutyCycleInput> m_dutyCycle;
   wpi::units::hertz_t m_frequencyThreshold = {100_Hz};
   double m_fullRange;
   double m_expectedZero;

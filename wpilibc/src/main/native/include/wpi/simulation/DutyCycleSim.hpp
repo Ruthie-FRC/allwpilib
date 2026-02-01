@@ -25,7 +25,7 @@ class DutyCycleSim {
    *
    * @param dutyCycle DutyCycle to simulate
    */
-  explicit DutyCycleSim(const DutyCycle& dutyCycle);
+  explicit DutyCycleSim(const DutyCycleInput& dutyCycle);
 
   /**
    * Creates a DutyCycleSim for a SmartIO channel.

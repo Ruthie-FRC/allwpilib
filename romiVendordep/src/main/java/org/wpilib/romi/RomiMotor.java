@@ -4,7 +4,7 @@
 
 package org.wpilib.romi;
 
-import org.wpilib.hardware.discrete.PWM;
+import org.wpilib.hardware.discrete.PWMOutput;
 import org.wpilib.hardware.motor.PWMMotorController;
 
 /**
