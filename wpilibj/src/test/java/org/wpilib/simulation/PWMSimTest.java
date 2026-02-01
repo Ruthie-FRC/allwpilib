@@ -26,7 +26,7 @@ class PWMSimTest {
     BooleanCallback callback = new BooleanCallback();
 
     try (CallbackStore cb = sim.registerInitializedCallback(callback, false);
-        PWM pwm = new PWM(0)) {
+        PWM pwm = new PWMOutput(0)) {
       assertTrue(sim.getInitialized());
     }
   }
@@ -42,7 +42,7 @@ class PWMSimTest {
     IntCallback callback = new IntCallback();
 
     try (CallbackStore cb = sim.registerPulseMicrosecondCallback(callback, false);
-        PWM pwm = new PWM(0)) {
+        PWM pwm = new PWMOutput(0)) {
       sim.setPulseMicrosecond(2290);
       assertEquals(2290, sim.getPulseMicrosecond());
       assertEquals(2290, pwm.getPulseTimeMicroseconds());
@@ -62,7 +62,7 @@ class PWMSimTest {
     IntCallback callback = new IntCallback();
 
     try (CallbackStore cb = sim.registerOutputPeriodCallback(callback, false);
-        PWM pwm = new PWM(0)) {
+        PWM pwm = new PWMOutput(0)) {
       sim.setOutputPeriod(3504);
       assertEquals(3504, sim.getOutputPeriod());
       assertTrue(callback.wasTriggered());

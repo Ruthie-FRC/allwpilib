@@ -21,7 +21,7 @@ TEST(DutyCycleSimTest, Initialization) {
   BooleanCallback callback;
   auto cb = sim.RegisterInitializedCallback(callback.GetCallback(), false);
 
-  DutyCycle dc{2};
+  DutyCycleInput dc{2};
   EXPECT_TRUE(sim.GetInitialized());
   EXPECT_TRUE(callback.WasTriggered());
   EXPECT_TRUE(callback.GetLastValue());
@@ -35,7 +35,7 @@ TEST(DutyCycleSimTest, Initialization) {
 TEST(DutyCycleSimTest, SetFrequency) {
   HAL_Initialize(500, 0);
 
-  DutyCycle dc{2};
+  DutyCycleInput dc{2};
   DutyCycleSim sim(dc);
 
   DoubleCallback callback;
@@ -51,7 +51,7 @@ TEST(DutyCycleSimTest, SetFrequency) {
 TEST(DutyCycleSimTest, SetOutput) {
   HAL_Initialize(500, 0);
 
-  DutyCycle dc{2};
+  DutyCycleInput dc{2};
   DutyCycleSim sim(dc);
 
   DoubleCallback callback;
